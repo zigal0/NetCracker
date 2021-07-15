@@ -25,7 +25,7 @@ public class Human {
         String[] subInfo = info.split(delimiter);
         secondName = subInfo[0];
         firstName = subInfo[1];
-        birthDate = DateParser.parseDate(subInfo[2]);
+        birthDate = DateParser.parseDate(subInfo[2], "\\.");
     }
 
     public String getSecondName() {

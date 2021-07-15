@@ -58,7 +58,7 @@ public class DateBaseDemo {
                     System.out.print("Finish: ");
                     String finish = in.nextLine();
                     try {
-                        db.findPeriod(DateParser.parseDate(start), DateParser.parseDate(finish));
+                        db.findPeriod(DateParser.parseDate(start, "\\."), DateParser.parseDate(finish, "\\."));
                     } catch (Exception e) {
                         System.out.println(ANSI_RED + "Wrong date format" + ANSI_RESET);
                     }

@@ -158,7 +158,7 @@ public class DataBase {
     public void show() {
         Set<Address> adds = this.list.keySet();
         for (Address add : adds) {
-            System.out.println(this.list.get(add).toOutput() + " " + add.toOutput());
+            this.printSingle(add);
         }
     }
 

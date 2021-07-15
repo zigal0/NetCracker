@@ -9,8 +9,8 @@ public class DiceDemo {
 
     public static void main(String[] args) {
         System.out.println("Game of dice with computer");
-        System.out.println("Type \"new\" to start new game with new players, " +
-                "\"again\" to start new game with same players or \"end\" to finish process");
+        DiceDemo diceDemo = new DiceDemo();
+        diceDemo.getHelp();
         Scanner in = new Scanner(System.in);
         String command;
         Dice dice = new Dice();
@@ -34,10 +34,21 @@ public class DiceDemo {
                     dice.init();
                     dice.playGame();
                     break;
+                case "help":
+                    diceDemo.getHelp();
+                    break;
                 default:
                     System.err.println(ANSI_RED + "Wrong command, try other" + ANSI_RESET);
                     break;
             }
         }
+    }
+
+    public void getHelp() {
+        System.out.println("There are next commands:");
+        System.out.println(" - \"new\" tto start new game with new players;");
+        System.out.println(" - \"help\" to get info about commands;");
+        System.out.println(" - \"again\" to start new game with same players;");
+        System.out.println(" - \"end\" to finish session.");
     }
 }
