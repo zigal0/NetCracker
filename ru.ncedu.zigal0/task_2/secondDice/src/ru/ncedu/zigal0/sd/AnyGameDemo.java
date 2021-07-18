@@ -1,0 +1,1 @@
+package ru.ncedu.zigal0.sd; set the main rules how to create class AnyGameDemo for console games.

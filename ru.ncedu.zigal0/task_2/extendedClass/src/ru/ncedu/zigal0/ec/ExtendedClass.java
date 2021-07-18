@@ -2,6 +2,10 @@ package ru.ncedu.zigal0.ec;
 
 import java.util.Objects;
 
+/**
+ * The ExtendedClass class represents storage for an object of type such as Byte, Int, Double, String.
+ * @param <T> - the type of elements maintained by this ExtendedClass
+ */
 public class ExtendedClass<T> {
     private final T object;
 

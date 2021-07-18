@@ -18,6 +18,6 @@ public class OddImpl implements Oddity {
 
     @Override
     public boolean isOdd() {
-        return number % 2 == 0;
+        return number % 2 != 0;
     }
 }
