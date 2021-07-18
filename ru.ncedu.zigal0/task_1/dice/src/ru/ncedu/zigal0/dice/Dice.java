@@ -9,7 +9,7 @@ import java.util.Scanner;
  * There are N players (computer is last in list). Everyone rolls K cubes at the same time. The one with the highest score is the winner.
  * Whoever won is the first to roll in the next round. The game goes up to 7 wins. You start the game.
  */
-public class Dice {
+public class Dice implements Game{
     // Constants for output
     public static final String ANSI_YELLOW = "\u001B[33m";
     public static final String ANSI_RESET = "\u001B[0m";
@@ -18,12 +18,13 @@ public class Dice {
     private static int numberOfCubes = 0;
     private static int numberOfPlayers = 0;
     private final static int wins = 7;
-    private final ArrayList<Player> list = new ArrayList<>();
+    private final ArrayList<PlayerDice> list = new ArrayList<>();
 
     /**
      * Initialization of new game. Clears list from previous players. Sets number of players and numbers of cubes.
      * Adds new players.
      */
+    @Override
     public void init() {
         this.list.clear();
         Scanner in = new Scanner(System.in);
@@ -44,19 +45,20 @@ public class Dice {
         numberOfCubes = Integer.parseInt(kStr);
 
         String name;
-        this.list.add(new Player("You"));
+        this.list.add(new PlayerDice("You"));
         System.out.println("Player # 1\n" + "You");
         for (int j = 1; j < numberOfPlayers - 1; j++) {
             System.out.println("Enter name player # " + (j + 1));
             name = in.next();
-            this.list.add(new Player("Player " + name));
+            this.list.add(new PlayerDice("Player " + name));
         }
-        this.list.add(new Player("Computer"));
+        this.list.add(new PlayerDice("Computer"));
     }
 
     /**
      * Implementation of game algorithm
      */
+    @Override
     public void playGame() {
         int curScore;
         int round = 1;
@@ -87,7 +89,7 @@ public class Dice {
                 }
             }
 
-        } while (!this.endOfGame());
+        } while (!this.isGameFinished());
 
         this.showWinner();
     }
@@ -95,6 +97,7 @@ public class Dice {
     /**
      * Shows Players who reach 7 wins
      */
+    @Override
     public void showWinner() {
         for (int j = 0; j < numberOfPlayers; j++) {
             if (this.list.get(j).getNumberOfWins() == wins) {
@@ -112,7 +115,8 @@ public class Dice {
      * Checks for ending game
      * @return true if game is finished or false
      */
-    public boolean endOfGame() {
+    @Override
+    public boolean isGameFinished() {
         for (int j = 0; j < numberOfPlayers; j++) {
             if (this.list.get(j).getNumberOfWins() == wins) {
                 return true;
@@ -151,7 +155,7 @@ public class Dice {
      * Sets 0 to numberOfWins for all players.
      */
     public void clearNumberOfWins() {
-        for (Player p : this.list) {
+        for (PlayerDice p : this.list) {
             p.setNumberOfWins(0);
         }
     }
