@@ -11,8 +11,7 @@ public interface Oddity {
     void setNumber(int x);
 
     /**
-     * Checks whether the number is odd or not.
-     * @return boolean - true if number is odd and false otherwise.
+     * Checks whether the number is odd or not and print result in console.
      */
-    boolean isOdd();
+    void isOdd();
 }

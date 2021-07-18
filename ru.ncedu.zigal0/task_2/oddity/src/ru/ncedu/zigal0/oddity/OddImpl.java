@@ -17,7 +17,11 @@ public class OddImpl implements Oddity {
     }
 
     @Override
-    public boolean isOdd() {
-        return number % 2 != 0;
+    public void isOdd() {
+        if (number % 2 != 0) {
+            System.out.println("Number is odd");
+        } else {
+            System.out.println("Number is even");
+        }
     }
 }

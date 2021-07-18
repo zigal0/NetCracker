@@ -21,7 +21,8 @@ public interface Game {
 
     /**
      * Checks whether the game is finished or not.
-     * @return boolean - true if game is finished and false otherwise
+     * @return boolean - true if game is finished
+     * and false otherwise
      */
     boolean isGameFinished();
 }
