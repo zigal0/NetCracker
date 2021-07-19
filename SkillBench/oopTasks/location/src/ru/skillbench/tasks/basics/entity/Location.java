@@ -46,7 +46,7 @@ public interface Location {
         /* Город */
         CITY("г. "),
         /* Район (города) */
-        DISTRICT("р-н "),
+        DISTRICT("р-н. "),
         /* Улица (проспект, переулок и т.п.) */
         STREET("ул. "),
         /* Дом */
@@ -54,7 +54,7 @@ public interface Location {
         /* Квартира */
         APARTMENT("кв. ");
 
-        private String nameForAddress;
+        private final String nameForAddress;
 
         private Type(String nameForAddress) {
             this.nameForAddress = nameForAddress;
