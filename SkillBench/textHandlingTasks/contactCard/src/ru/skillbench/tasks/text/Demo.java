@@ -27,5 +27,6 @@ public class Demo {
         System.out.println(birthDay.getTime());
         System.out.println("Passed after birth day: " + period.getYears() + " years, "
                 + period.getMonths() + " months, " + period.getDays() + " days.");
+        System.out.println("End of test!");
     }
 }
