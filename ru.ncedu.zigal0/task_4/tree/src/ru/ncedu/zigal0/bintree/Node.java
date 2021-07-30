@@ -27,11 +27,7 @@ public class Node {
 
     @Override
     public String toString() {
-        return "Node{" +
-                "value=" + value +
-                ", leftChild=" + leftChild +
-                ", rightChild=" + rightChild +
-                '}';
+        return "[value = " + value + "; leftChild = " + leftChild + ", rightChild=" + rightChild + ']';
     }
 
     public void setLeftChild(Node leftChild) {

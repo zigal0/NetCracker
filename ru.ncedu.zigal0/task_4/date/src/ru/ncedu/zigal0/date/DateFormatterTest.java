@@ -14,7 +14,12 @@ import java.util.GregorianCalendar;
 
 import static org.junit.Assert.assertEquals;
 
-public class FormatterTest {
+/**
+ * Class for testing DateFormatter methods.
+ *
+ * @author zigal0
+ */
+public class DateFormatterTest {
 
     @Rule
     public TestRule globalTimeout = new DisableOnDebug(Timeout.seconds(1));
@@ -33,7 +38,7 @@ public class FormatterTest {
     @Test
     public void toDateDefault() {
         try {
-            dateForTest = Formatter.toDate("1999-11-30 16:30");
+            dateForTest = DateFormatter.toDate("1999-11-30 16:30");
         } catch (ParseException e) {
             System.out.println("Wrong");
         }
@@ -43,7 +48,7 @@ public class FormatterTest {
     @Test
     public void toCalendarDefault() {
         try {
-            calendarForTest = Formatter.toCalendar("1999-11-30 16:30");
+            calendarForTest = DateFormatter.toCalendar("1999-11-30 16:30");
         } catch (ParseException e) {
             System.out.println("Wrong");
         }
@@ -52,11 +57,11 @@ public class FormatterTest {
 
     @Test(expected = ParseException.class)
     public void toDateWithException() throws ParseException{
-        dateForTest = Formatter.toDate("1999-11/30 16:30");
+        dateForTest = DateFormatter.toDate("1999-11/30 16:30");
     }
 
     @Test(expected = ParseException.class)
     public void toCalendarWithException() throws ParseException{
-        calendarForTest = Formatter.toCalendar("1999;11-30 16:30");
+        calendarForTest = DateFormatter.toCalendar("1999;11-30 16:30");
     }
 }

@@ -5,6 +5,11 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+/**
+ * Own class for testing DateFormatter methods.
+ *
+ * @author zigal0
+ */
 public class MyTest {
     private final Calendar trueForCalendar = new GregorianCalendar(1999, Calendar.NOVEMBER, 30, 16, 30);
     private Date trueForDate = new Date();
@@ -23,7 +28,7 @@ public class MyTest {
 
     public boolean toCalendarDefault() {
         try {
-            calendarForTest = Formatter.toCalendar("1999-11-30 16:30");
+            calendarForTest = DateFormatter.toCalendar("1999-11-30 16:30");
         } catch (ParseException e) {
             System.out.println("Wrong");
         }
@@ -32,7 +37,7 @@ public class MyTest {
 
     public boolean toDateDefault() {
         try {
-            dateForTest = Formatter.toDate("1999-11-30 16:30");
+            dateForTest = DateFormatter.toDate("1999-11-30 16:30");
         } catch (ParseException e) {
             System.out.println("Wrong");
         }
@@ -41,7 +46,7 @@ public class MyTest {
 
     public boolean toDateWithException() {
         try{
-            dateForTest = Formatter.toDate("1999-11/30 16:30");
+            dateForTest = DateFormatter.toDate("1999-11/30 16:30");
         } catch (ParseException e) {
             return true;
         }
@@ -50,7 +55,7 @@ public class MyTest {
 
     public boolean toCalendarWithException() {
         try{
-            calendarForTest = Formatter.toCalendar("1999-11.30 16:30");
+            calendarForTest = DateFormatter.toCalendar("1999-11.30 16:30");
         } catch (ParseException e) {
             return true;
         }

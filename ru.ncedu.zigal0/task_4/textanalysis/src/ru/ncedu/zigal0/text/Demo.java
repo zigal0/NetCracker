@@ -12,7 +12,7 @@ public class Demo {
         String secondString = "This string is the second";
         Analyzer firstAnalyzer = new Analyzer(firstString);
         Analyzer secondAnalyzer = new Analyzer(secondString);
-        firstAnalyzer.fullAnalysis(secondAnalyzer);
+        firstAnalyzer.fullAnalysisAndCompare(secondAnalyzer);
 
         System.out.println("OutPut for task:");
         System.out.println("Symbols that are included in both the first and second strings:");
@@ -33,8 +33,23 @@ public class Demo {
         System.out.println();
         System.out.println(separator);
 
-        System.out.println("In ascending order of cyclic shift to the left by n bits of the symbol hash function ");
+        System.out.println("Sorted:");
+        Collections.sort(sameSymbols);
+        for (char c : sameSymbols) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+        System.out.println(separator);
+
+        System.out.println("Sorted (reverse):");
         Collections.reverse(sameSymbols);
+        for (char c : sameSymbols) {
+            System.out.print(c + " ");
+        }
+        System.out.println();
+        System.out.println(separator);
+
+        System.out.println("In ascending order of cyclic shift to the left by n bits of the symbol hash function:");
         System.out.print("Enter n for left shift compare: ");
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
@@ -45,6 +60,9 @@ public class Demo {
         }
     }
 
+    /**
+     * Comparator for compare hash function of symbols shifted to the left by n bits.
+     */
     public static class CharHashComparator implements Comparator<Character> {
 
         private final int n;
