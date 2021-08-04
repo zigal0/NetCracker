@@ -35,13 +35,14 @@ public class Demo {
         System.out.println(separator);
 
         // Shows remove and find functions
+        System.out.println("Try to remove Node with value 7");
         System.out.println(tree.removeNode(7));
         System.out.println(separator);
-        System.out.println(tree.find(10));
+        System.out.println("Try to find Node with value 10");
+        System.out.println(tree.findNode(10));
         System.out.println(separator);
-        System.out.println(tree.find(6));
-        System.out.println(separator);
-        System.out.println(tree.find(20));
+        System.out.println("Try to find Node with value 20");
+        System.out.println(tree.findNode(20));
         System.out.println(separator);
 
         tree.print();

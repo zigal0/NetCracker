@@ -27,7 +27,7 @@ public class MyBinTree {
      * @param value - int
      * @return the Node whose value is equal to the given.
      */
-    public Node find(int value) {
+    public Node findNode(int value) {
         Node currentNode = rootNode;
         while (currentNode.getValue() != value) {
             if (value < currentNode.getValue()) {
