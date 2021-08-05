@@ -27,7 +27,6 @@ public class Vectors {
         }
         Vector<Double> res = new Vector<>();
         for (int i = 0; i < v1.size(); i++) {
-            System.out.println(v1.get(i) + " " + v2.get(i));
             res.add(v1.get(i) + v2.get(i));
         }
         return res;
@@ -59,25 +58,40 @@ public class Vectors {
     }
 
     public void outputVector(Vector<Double> v, OutputStream out) throws IOException {
-        out.write(toByteArray(v.size()));
+//        out.write(toByteArray(v.size()));
+//        for (double item : v) {
+//           out.write(toByteArray(item));
+//        }
+//        out.flush();
+        DataOutputStream dos = new DataOutputStream(out);
+        dos.writeInt(v.size());
         for (double item : v) {
-           out.write(toByteArray(item));
+            dos.writeDouble(item);
         }
         out.flush();
+        dos.close();
     }
 
     public Vector<Double> inputVector(InputStream in) throws IOException {
-        byte[] bytes = new byte[8];
-        if (in.read(bytes) != 8) {
-            throw new IOException();
+//        byte[] bytes = new byte[8];
+//        if (in.read(bytes) != 8) {
+//            throw new IOException();
+//        }
+//        Vector<Double> v = new Vector<>((int) toDouble(bytes));
+//        while (in.available()>0) {
+//            if (in.read(bytes) != 8) {
+//                throw new IOException();
+//            }
+//            v.add(toDouble(bytes));
+//        }
+//        return v;
+        DataInputStream dis = new DataInputStream(in);
+        int size = dis.readInt();
+        Vector<Double> v = new Vector<>(size);
+        for (int i = 0; i < size; i++) {
+            v.add(dis.readDouble());
         }
-        Vector<Double> v = new Vector<>((int) toDouble(bytes));
-        while (in.available()>0) {
-            if (in.read(bytes) != 8) {
-                throw new IOException();
-            }
-            v.add(toDouble(bytes));
-        }
+        dis.close();
         return v;
     }
 
