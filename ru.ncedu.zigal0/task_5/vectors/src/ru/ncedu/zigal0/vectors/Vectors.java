@@ -21,7 +21,7 @@ public class Vectors {
      * @return Vector<Double> - vector multiplied by the scalar.
      * @throws IllegalStateException - if v is null.
      */
-    public Vector<Double> multiplyByScalar(Vector<Double> v, double scalar) throws IllegalStateException {
+    public static Vector<Double> multiplyByScalar(Vector<Double> v, double scalar) throws IllegalStateException {
         if (v == null) {
             throw new IllegalStateException();
         }
@@ -41,7 +41,7 @@ public class Vectors {
      * @throws ArrayIndexOutOfBoundsException - if vectors have different sizes.
      * @throws IllegalStateException          - if one of the Vector is null.
      */
-    public Vector<Double> sumVectors(Vector<Double> v1, Vector<Double> v2) throws ArrayIndexOutOfBoundsException, IllegalStateException {
+    public static Vector<Double> sumVectors(Vector<Double> v1, Vector<Double> v2) throws ArrayIndexOutOfBoundsException, IllegalStateException {
         if (v1 == null || v2 == null) {
             throw new IllegalStateException();
         }
@@ -64,7 +64,7 @@ public class Vectors {
      * @throws ArrayIndexOutOfBoundsException - if vectors have different sizes.
      * @throws IllegalStateException          - if one of the Vector is null.
      */
-    public double dotProduct(Vector<Double> v1, Vector<Double> v2) throws ArrayIndexOutOfBoundsException, IllegalStateException {
+    public static double dotProduct(Vector<Double> v1, Vector<Double> v2) throws ArrayIndexOutOfBoundsException, IllegalStateException {
         if (v1 == null || v2 == null) {
             throw new IllegalStateException();
         }
@@ -87,7 +87,7 @@ public class Vectors {
      * @throws ArrayIndexOutOfBoundsException - if vectors have different sizes.
      * @throws IllegalStateException          - if one of the Vector is null.
      */
-    public Vector<Double> difVectors(Vector<Double> v1, Vector<Double> v2) throws ArrayIndexOutOfBoundsException, IllegalStateException {
+    public static Vector<Double> difVectors(Vector<Double> v1, Vector<Double> v2) throws ArrayIndexOutOfBoundsException, IllegalStateException {
         return sumVectors(v1, multiplyByScalar(v2, -1));
     }
 
@@ -99,7 +99,7 @@ public class Vectors {
      * @return Vector<Double> - vector multiplied by the scalar.
      * @throws IllegalStateException - if v is null.
      */
-    public Vector<Double> divByScalar(Vector<Double> v, double divisor) throws NullPointerException, IllegalStateException {
+    public static Vector<Double> divByScalar(Vector<Double> v, double divisor) throws NullPointerException, IllegalStateException {
         if (divisor == 0) {
             throw new NullPointerException();
         }
@@ -113,7 +113,7 @@ public class Vectors {
      * @param out - the stream into which the vector will be written (OutputStream).
      * @throws IOException - if any error occurs with IO.
      */
-    public void outputVector(Vector<Double> v, OutputStream out) throws IOException {
+    public static void outputVector(Vector<Double> v, OutputStream out) throws IOException {
 //        out.write(toByteArray(v.size()));
 //        for (double item : v) {
 //           out.write(toByteArray(item));
@@ -135,7 +135,7 @@ public class Vectors {
      * @return Vector - read vector from in.
      * @throws IOException - if any error occurs with IO.
      */
-    public Vector<Double> inputVector(InputStream in) throws IOException {
+    public static Vector<Double> inputVector(InputStream in) throws IOException {
 //        byte[] bytes = new byte[8];
 //        if (in.read(bytes) != 8) {
 //            throw new IOException();
@@ -189,7 +189,7 @@ public class Vectors {
      * @param out - the stream into which the vector will be written (Writer).
      * @throws IOException - if any error occurs with IO.
      */
-    public void writeVector(Vector<Double> v, Writer out) throws IOException {
+    public static void writeVector(Vector<Double> v, Writer out) throws IOException {
         out.write("" + v.size());
         for (double item : v) {
             out.write(" " + item);
@@ -204,7 +204,7 @@ public class Vectors {
      * @return Vector - read vector from in.
      * @throws IOException - if any error occurs with IO.
      */
-    public Vector<Double> readVector(Reader in) throws IOException {
+    public static Vector<Double> readVector(Reader in) throws IOException {
         char c;
         StringBuilder sb = new StringBuilder();
         do {

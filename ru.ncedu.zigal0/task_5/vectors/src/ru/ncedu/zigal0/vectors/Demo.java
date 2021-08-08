@@ -1,13 +1,11 @@
 package ru.ncedu.zigal0.vectors;
 
 import java.io.*;
-import java.nio.ByteBuffer;
 import java.util.Vector;
 
 public class Demo {
     public static void main(String[] args) throws IOException {
         String separator = "**********************************************";
-        Vectors vectors = new Vectors();
         // Creation Vector v1
         Vector<Double> v1 = new Vector<>();
         v1.add(2.5);
@@ -20,11 +18,11 @@ public class Demo {
 
         // Simple operation
         System.out.println("Multiplied by 3");
-        printVector(vectors.multiplyByScalar(v1, 3));
+        printVector(Vectors.multiplyByScalar(v1, 3));
         System.out.println(separator);
 
         System.out.println("Divided by 5");
-        printVector(vectors.divByScalar(v1, 5));
+        printVector(Vectors.divByScalar(v1, 5));
         System.out.println(separator);
 
         // Creation Vector v2 of the same size
@@ -40,15 +38,15 @@ public class Demo {
 
 
         System.out.println("Sum of 2 vectors");
-        printVector(vectors.sumVectors(v1, v2));
+        printVector(Vectors.sumVectors(v1, v2));
         System.out.println(separator);
 
         System.out.println("Difference between 2 vectors");
-        printVector(vectors.difVectors(v1, v2));
+        printVector(Vectors.difVectors(v1, v2));
         System.out.println(separator);
 
         System.out.println("Scalar product");
-        System.out.println(vectors.dotProduct(v1, v2));
+        System.out.println(Vectors.dotProduct(v1, v2));
 
         // Creation Vector v2 of a different size
         Vector<Double> v3 = new Vector<>();
@@ -57,19 +55,19 @@ public class Demo {
 
         // Try to sum vectors with different size
         try {
-            vectors.sumVectors(v1, v3);
+            Vectors.sumVectors(v1, v3);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Error: different sizes");
         }
         // Try to scalar multiply vectors with different size
         try {
-            vectors.dotProduct(v1, v3);
+            Vectors.dotProduct(v1, v3);
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Error: different sizes");
         }
         // Try to scalar multiply vector & null
         try {
-            vectors.dotProduct(v1, null);
+            Vectors.dotProduct(v1, null);
         } catch (IllegalStateException e) {
             System.out.println("One Vector is null");
         }
@@ -80,11 +78,11 @@ public class Demo {
         System.out.println("Write the vector to ByteFile.bin in byte representation");
         File file = new File("ByteFile.bin");
         FileOutputStream fos = new FileOutputStream(file);
-        vectors.outputVector(v1, fos);
+        Vectors.outputVector(v1, fos);
 
         System.out.println("Read the vector from ByteFile.bin in byte representation");
         FileInputStream fis = new FileInputStream(file);
-        Vector<Double> v4 = vectors.inputVector(fis);
+        Vector<Double> v4 = Vectors.inputVector(fis);
         printVector(v4);
         System.out.println(separator);
 
@@ -93,10 +91,10 @@ public class Demo {
 
         // Symbols
         Reader reader = new InputStreamReader(System.in);
-        Vector<Double> vRead = vectors.readVector(reader);
+        Vector<Double> vRead = Vectors.readVector(reader);
 
         Writer writer = new PrintWriter(System.out);
-        vectors.writeVector(vRead, writer);
+        Vectors.writeVector(vRead, writer);
         System.out.println();
         System.out.println(separator);
 
